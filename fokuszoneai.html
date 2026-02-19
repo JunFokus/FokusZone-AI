@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FokusZone AI</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f0f3f9;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card{
+  width:420px;
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 12px 28px rgba(0,0,0,0.12);
+  display:flex;
+  flex-direction:column;
+}
+
+h2{
+  margin:0;
+}
+
+.subtitle{
+  font-size:13px;
+  color:#666;
+  margin-bottom:12px;
+}
+
+.chat{
+  background:#f5f7fb;
+  border-radius:14px;
+  padding:10px;
+  height:320px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.msg{
+  padding:10px 12px;
+  border-radius:12px;
+  max-width:80%;
+  font-size:14px;
+}
+
+.user{
+  background:#222;
+  color:white;
+  align-self:flex-end;
+}
+
+.ai{
+  background:#e9eef6;
+  color:#222;
+  align-self:flex-start;
+}
+
+.inputRow{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+}
+
+input{
+  flex:1;
+  border:none;
+  border-radius:10px;
+  padding:12px;
+  background:#f5f7fb;
+  outline:none;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:12px 16px;
+  background:#222;
+  color:white;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+button:hover{
+  background:#444;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>FokusZone AI</h2>
+<div class="subtitle">AI Study Coach — Supporting SDG 4 Quality Education</div>
+
+<div id="chat" class="chat">
+  <div class="msg ai">Hi. Tell me what you are studying and I will help you plan.</div>
+</div>
+
+<div class="inputRow">
+  <input id="input" placeholder="What are you studying today?">
+  <button onclick="sendMessage()">Send</button>
+</div>
+
+</div>
+
+<script>
+const chat=document.getElementById("chat");
+
+function sendMessage(){
+  const input=document.getElementById("input");
+  const text=input.value.trim();
+  if(!text) return;
+
+  const userMsg=document.createElement("div");
+  userMsg.className="msg user";
+  userMsg.innerText=text;
+  chat.appendChild(userMsg);
+
+  input.value="";
+
+  const aiMsg=document.createElement("div");
+  aiMsg.className="msg ai";
+  aiMsg.innerText="AI response will appear here (design mode).";
+  chat.appendChild(aiMsg);
+
+  chat.scrollTop=chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
